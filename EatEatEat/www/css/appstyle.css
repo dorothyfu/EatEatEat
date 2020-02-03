@@ -1,0 +1,73 @@
+html, body {
+  height:100%;
+  width:100%;
+  background-color: #000000;
+}
+
+
+.container {
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+  height:98%;
+  width:98%;
+}
+
+.container > * {
+  background-color: #000000;
+  padding: 1em;
+}
+
+/* Typically, you wouldn't specify a height or min-height on this, instead allowing your actual content (i.e., text, images, etc.) to dictate the height of your content area. But since this example has very minimal content, I've set a min-height to mimic a taller content area. */
+.content {
+  min-height: 40%;
+  overflow-y: scroll;
+}
+
+/* Layout is stacked vertically by default (for narrower viewports), so give some breathing room between the sections. */
+/* Select all elements where parent is a container */
+.container > * {
+  margin-bottom: 2%;
+}
+
+/* Now let's apply grid for wider viewports. */
+@media screen and (min-width: 40em) {
+  .container > * {
+    margin-bottom: 0;
+  }
+  /* Define the grid */
+  .container {
+    display: grid;
+    grid-template-columns: 18% 60% 18%;
+    grid-gap: 2% 2%;
+    grid-template-rows: 10% auto 0%;
+  }
+  /* Place items on the grid */
+  .header {
+    grid-column: 1 / span 3;
+    text-align: center;
+    color: white;
+  }
+  .sidebar {
+    grid-row-end: span 2;
+    overflow-y: scroll;
+    color: white;
+  }
+  .content {
+    grid-column: 2;
+  }
+
+}
+
+
+/* Sections of Layout
+-------------------------------------- */
+/* Generic styles for demo purposes
+-------------------------------------- */
+
+#mySVGCanvas {
+	border: 1px solid #00f;
+	width: 400px;
+	height: 500px;
+	margin: auto;
+	background-color: white;
+
+}
